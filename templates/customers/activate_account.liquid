@@ -1,26 +1,28 @@
 <!-- /templates/customers/activate_account.liquid -->
-
 <div class="container my-5">
-  <h2>Activate account</h2>
-  <div class="row">
-    {% form 'activate_customer_password' %}
-    {% include 'form-error', form: form %}
-      <div class="col-12">
-        <div class="password">
-          <label for="password">Password</label>
-          <input type="password" name="customer[password]" class="form-control" />
-        </div>
-        <div class="password_confirm">
-          <label for="password_confirmation">Password Confirmation</label>
-          <input type="password" name="customer[password_confirmation]" class="form-control" />
-        </div>
-        <div class="action_bottom">
-          <input type="submit" value="Activate Account" class="btn btn-promary w-100"/>
-          <span>or</span>
-          <input type="submit" name="decline" value="Decline Invitation" class="form-control btn btn-promary w-100" />
-        </div>
-      </div>
-    {% endform %}
-  </div>
-</div>
+    <h1 class="lead">Activate Account</h1>
+    <div class="row">
+        {% form 'activate_customer_password' %}
+            {% include 'form-error', form: form %}
+            
+            <div class="col-12">
+                <label for="activate_password1" class="form-label">Password</label>
+                <input class="form-control" type="password" name="customer[password]" id="activate_password1">
+            </div>
+            <div class="col-12">
+                <label for="activate_password2" class="form-label">Password Confirmation</label>
+                <input class="form-control" type="password" name="customer[password_confirmation]" id="activate_password2">
+            </div>
 
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary w-100 rounded-0">Activate Account</button>
+            </div>
+
+            <p class="text-center">or</p>
+
+            <div class="col-12">
+                <input type="submit" name="decline" class="btn btn-primary w-100 rounded-0" value="Decline Invitation">
+            </div>
+        {% endform %}
+    </div>
+</div>

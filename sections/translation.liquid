@@ -1,4 +1,4 @@
-{% form 'localization', id: 'localization_form_tag', class: 'dropup' %}
+{% form 'localization', id: "localization_form_tag", class: "dropup" %}
 <div class="localeBtn">{{ 'globe.png' | asset_img_url: '50px' | img_tag }}</div>
 <div class="dropup-content">
     {% for locale in shop.published_locales %}
