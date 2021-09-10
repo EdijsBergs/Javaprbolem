@@ -1,0 +1,26 @@
+<!-- /templates/customers/activate_account.liquid -->
+
+<div class="container my-5">
+  <h2>Activate account</h2>
+  <div class="row">
+    {% form 'activate_customer_password' %}
+    {% include 'form-error', form: form %}
+      <div class="col-12">
+        <div class="password">
+          <label for="password">Password</label>
+          <input type="password" name="customer[password]" class="form-control" />
+        </div>
+        <div class="password_confirm">
+          <label for="password_confirmation">Password Confirmation</label>
+          <input type="password" name="customer[password_confirmation]" class="form-control" />
+        </div>
+        <div class="action_bottom">
+          <input type="submit" value="Activate Account" class="btn btn-promary w-100"/>
+          <span>or</span>
+          <input type="submit" name="decline" value="Decline Invitation" class="form-control btn btn-promary w-100" />
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>
+

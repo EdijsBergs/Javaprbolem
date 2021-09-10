@@ -1,0 +1,85 @@
+<!-- /templates/customers/addresses.liquid -->
+<div class="container my-5">
+    <h1 class="mb-3">Addresses</h1>
+    <div class="row">
+        <div class="col-12 col-md-4">
+            {% for address in customer.addresses %}
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            {{ address | format_address }}
+                        </div>
+                        <div class="card-footer">
+                            <form action="/account/addresses/{{ address.id }}" method="POST" 
+                            data-confirm-message="Du you really want to delete this address. It will be deleted perminantly">
+                                <input type="hidden" name="_method" value="delete">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div> 
+                </div>
+            {% endfor %}
+            
+        </div>
+        <div class="col-12 col-md-8">
+            <h2>New Address</h2>
+            {% form 'customer_address', customer.new_address %}
+        
+            {{ form.errors | default_errors }}
+            <div class="row mb-3 border-top border-bottom rounded-3 pb-3 pt-3">
+                <h6>Personal coontact info</h6>
+                <label for="first_name">First Name</label>
+                <input class="form-control" type="text" value="" name="address[first_name]" size="30" />
+            
+                <label for="last_name">Last Name</label>
+                <input class="form-control" type="text" value="" name="address[last_name]" size="30" />
+            
+                <label for="company">Company</label>
+                <input class="form-control" type="text" value="" name="address[company]" />
+
+                <label for="phone">Phone Number</label>
+                <input class="form-control" type="tel" value="" name="address[phone]" />
+            </div>
+            
+            <div class="row mb-3 border-top border-bottom rounded-2 pb-3 pt-3">
+                <h6>Regonal informal</h6>
+                <label for="address1">Address 1</label>
+                <input class="form-control" type="text" value="" name="address[address1]" />
+            
+                <label for="address2">Address 2</label>
+                <input class="form-control" type="text" value="" name="address[address2]" />
+            
+                <label for="city">City</label>
+                <input class="form-control" type="text" value="" name="address[city]" />
+            
+                <!-- See docs for @shopify/theme-addresses to support Country and Province -->
+                <label for="country">Country</label>
+                <select class="form-control" name="address[country]" /> {{ country_option_tags }} </select>
+            
+                <label for="province">Province</label>
+                <select class="form-control"name="address[province]" />
+                    <option value="---" data-provinces="[]">---</option>
+                    <option value="Canada" data-provinces="[['Alberta','Alberta'],['British Columbia','British Columbia'],['Manitoba','Manitoba'],['New Brunswick','New Brunswick'],['Newfoundland','Newfoundland'],['Northwest Territories','Northwest Territories'],['Nova Scotia','Nova Scotia'],['Nunavut','Nunavut'],['Ontario','Ontario'],['Prince Edward Island','Prince Edward Island'],['Quebec','Quebec'],['Saskatchewan','Saskatchewan'],['Yukon','Yukon']]">Canada</option>
+                    <option value="United Kingdom" data-provinces="[]">United Kingdom</option>
+                </select>
+            
+                <label for="zip">Zip/Post Code</label>
+                <input class="form-control" type="text" value="" name="address[zip]" />
+            </div>
+            
+
+            <input class="btn btn-primary btn-lg my-2" type="submit" value="Create" />
+        
+            {% endform %}
+            
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container py-5 my-5">
+    
